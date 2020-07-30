@@ -1,0 +1,33 @@
+﻿<div class="card dashboard-card card-transition @TextColorClass @BgColorClass mb-4 ">
+        <div class="card-body">
+            <span class="card-icon"><i class=" @IconClass"></i></span>
+            <div class="card-text @TextColorClass ">
+                <h5 class="card-title">@Title</h5>
+                <span class="card-number">@CardNumber</span>
+                <div class="progress">
+                    <div class="progress-bar w-50">   </div>
+                </div>
+                <span class="progress-description"> @ProgressDescription</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+@code {
+    [Parameter]
+    public string TextColorClass { get; set; } = "text-white";
+    [Parameter]
+    public string BgColorClass { get; set; }
+    [Parameter]
+    public string IconClass { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string CardNumber { get; set; }
+    [Parameter]
+    public string ProgressDescription { get; set; }
+
+}
