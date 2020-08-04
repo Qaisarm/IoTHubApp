@@ -1,19 +1,17 @@
-﻿<div class="card dashboard-card card-transition @TextColorClass @BgColorClass mb-4 ">
+﻿@inject IJSRuntime JSRuntime
+
+<div class="card dashboard-card card-transition @TextColorClass @BgColorClass mb-4 ">
     <div class="card-header">
         <span class="card-title"> @Title</span>
             <span class="card-tools">
                 <a href="javascript:;"> <i class="fas fa-sync-alt"></i></a>
             </span>
-               </div>
-    <div class="card-body">
-        <div id="@LineChartId" class="w-100">
+     </div>
+    
+        <div id="chart_placeholder" class="card-body">
 
         </div>
-    </div>
-           
-
 </div>
-
 
 
 @code {
@@ -25,7 +23,12 @@
     public string Title { get; set; }
     [Parameter]
     public string LineChartId { get; set; }
-    [Parameter]
-    public string ProgressDescription { get; set; }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("insertTemperatureLineChart");
+
+        await JSRuntime.InvokeVoidAsync("populateTemperatureLineChart");
+    }
 }
+
